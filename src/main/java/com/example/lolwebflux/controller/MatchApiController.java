@@ -21,7 +21,7 @@ public class MatchApiController {
     }
 
     @GetMapping("/matches/by-name/{summonerName}")
-    public Flux<Object> getMatchesBySummonerName(String summonerName) {
+    public Flux<Object> getMatchesBySummonerName(@PathVariable String summonerName) {
         return matchService.getMatchesBySummonerName(summonerName);
     }
 }
