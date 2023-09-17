@@ -3,6 +3,7 @@ package com.example.lolwebflux.controller;
 import com.example.lolwebflux.service.MatchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -17,5 +18,10 @@ public class MatchApiController {
     @GetMapping("/matches/by-puuid/{puuid}/ids")
     public Mono<List<String>> getMatchesIdsByPuuid(@PathVariable String puuid, @RequestParam(name = "start") int start, @RequestParam(name = "count") int count) {
         return matchService.getMatchesIdsByPuuid(puuid, start, count);
+    }
+
+    @GetMapping("/matches/by-name/{summonerName}")
+    public Flux<Object> getMatchesBySummonerName(String summonerName) {
+        return matchService.getMatchesBySummonerName(summonerName);
     }
 }

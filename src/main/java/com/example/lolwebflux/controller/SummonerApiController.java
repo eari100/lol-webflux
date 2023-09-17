@@ -1,5 +1,6 @@
 package com.example.lolwebflux.controller;
 
+import com.example.lolwebflux.dto.SummonerDto;
 import com.example.lolwebflux.service.SummonerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ public class SummonerApiController {
     private final SummonerService summonerService;
 
     @GetMapping("/{name}")
-    public Mono<String> getByName(@PathVariable String name) {
+    public Mono<SummonerDto> getByName(@PathVariable String name) {
         return summonerService.getByName(name);
     }
 }
